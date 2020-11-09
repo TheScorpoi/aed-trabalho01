@@ -18,6 +18,7 @@ Para compilar o programa, é necessário executar o comando na pasta onde o fich
 ```
 cc -Wall -O2 job_selection.c -o prog -lm
 ./prog 2020 30 6 1
+
 ```
 
 ### Relatório
@@ -26,5 +27,5 @@ Este projeto está acompanhado por um [Relatório](/Relatório), onde são tirad
 ## Autores
 
  - **[Pedro Sobral](https://github.com/TheScorpoi) - 98491**
- - **[André Freixo](link do andre) - 98495**
+ - **[André Freixo](https://github.com/andre180701) - 98495**
  - **[Marta Fradique](https://github.com/MartaFradique) - 98626**
