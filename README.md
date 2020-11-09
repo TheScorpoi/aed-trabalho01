@@ -21,7 +21,7 @@ cc -Wall -O2 job_selection.c -o prog -lm
 ```
 
 ### Relatório
-Este projeto está acompanhado por um [Relatório](/Relatório/RelatórioA01), onde são tiradas as principais conclusões.
+Este projeto está acompanhado por um [Relatório](/Relatório), onde são tiradas as principais conclusões.
 
 ## Autores
 
