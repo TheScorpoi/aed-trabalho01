@@ -21,7 +21,6 @@ cc -Wall -O2 job_selection.c -o prog -lm
 ```
 
 ### Relatório
-All the details, including the results, can be found in the [Work Report](/relatorio/AED_Report.pdf).
 Este projeto está acompanhado por um [Relatório](/Relatório/RelatórioA01), onde são tiradas as principais conclusões.
 
 ## Autores
