@@ -4,8 +4,8 @@ Trabalho Prático 01 - AED
 ## Job Selection
 EXPLICAR O TIPO DE PROBLEMA DO TRABALHO PRÁTICO E QUAL A SOLUCAO NS
 
-###  Getting Started
-Bem-vendo ao README.md, aqui verás todas as instruções para compilares e perceberes o projeto.
+###  Início
+Bem-vendo ao README.md, aqui verás todas as instruções para executares e perceberes o projeto.
 
 ### Pré-requesitos 
 Para compilar os programas, é vital ter um Compilador de C instalado na máquina (p.e. gcc).
