@@ -13,7 +13,7 @@ O projeto foi desenvolvido com recurso ao VSCode, e ao Matlab ... BLABLABLA WISH
 
 ### Compilar
 Para compilar o programa, é necessário executar o comando na pasta onde o ficheiro **job_selection.c** se encontra da seguinte maneira:
-*Os argumentos passados no segundo comando são meramente ilustrativos.*
+**Os argumentos passados no segundo comando são meramente ilustrativos.**
 
 ```
 cc -Wall -O2 job_selection.c -o prog -lm
