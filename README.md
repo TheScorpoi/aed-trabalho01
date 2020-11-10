@@ -11,7 +11,7 @@ Bem-vendo ao README.md, aqui verás todas as instruções para executares e perc
 Para compilar os programas, é vital ter um Compilador de C instalado na máquina (p.e. gcc).
 O projeto foi desenvolvido com recurso ao VSCode, e ao Matlab ... BLABLABLA WISHCAS SAQUETAS 
 
-### Configurar projeto no VSCOde
+### Configurar projeto no VSCode
 Para configurarem o o Projeto no VSCode, têm de ter instalado a extenção do GitHub instalado no IDE, fazem login e configuram essas coisas
 Depois disso fazem Ctrl + Shift + P, e escrevem "Git: Clone" dão Enter, e 
 colocam o seguinte [link](https://github.com/TheScorpoi/AED_Trabalho01.git).
