@@ -4,7 +4,7 @@
 //
 // TODO: Pedro Sobral, 98491
 // TODO: André Freixo, 98495
-// TODO: Marta Fradique, 98626
+// TODO: Marta Fradique, 98629
 //
 // Brute-force solution of the generalized weighted job selection problem
 //
