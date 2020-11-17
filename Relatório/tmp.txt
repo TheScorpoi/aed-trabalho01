@@ -1,0 +1,9 @@
+INTRO RELATORIO AED
+
+No contexto da disciplina de AED, foi-nos apresentado a realização deste trabalho prático, tendo como título “Job Selection”, onde basicamente está implementado um algortimo que dado um número de tarefas e programadores, devolve a melhor maneira de resolver as tarefas, ou seja, a maneira em que o profit é maior. 
+
+DIZER QUE ISTO VAI SER FEITO EM C, E ALGUMA PALHA, EXPLICAR COMO O ALGORITMO FOI PENSADO, E A MANEIRA QUE ELE VAI SER IMPLEMENTADO, FALAR DAS EXCESSOES PARA ISTO FUNCIONAR E ESSAS MERDAS 
+
+FALAR QUE VAI SER CORRIDO 3 VEZES (3 NMEC’S) E QUE HÁ CONCLUSOES E ELACOES A SEREM TIRADAS COM RECURSO AO MATLAB E AOS GRAFICOS QUE ELE NOS DISPONIBILIZA... BLA BLA 
+
+FALAR QUE OBJETIVOS ESPERAMOS ALCANÇAR, ALGUNS PODEM SER DO QUE O STOR TEM NO job_selection.c LOGO NO INCIO EM COMENTÁRIO, DEPOIS NO FIM DISTO SE VIRMOS QUE N
