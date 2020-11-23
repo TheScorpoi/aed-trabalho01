@@ -279,7 +279,6 @@ void recursive_function(problem_t *problem, int i)
 
   if (i = problem->T)
   {
-    //ir ver o melhor profit, fazer o best_assigened_to, e aquilo tudo
     if (problem->total_profit > problem->best_total_profit)
     {
       problem->best_total_profit = problem->total_profit;
@@ -296,12 +295,16 @@ void recursive_function(problem_t *problem, int i)
   {
     if (problem->busy[i] < problem->task[i].starting_date)
     {
+      //criar variáveis tmp 
       int profit_tmp = problem->total_profit;
       int busy_tmp = problem->busy[i];
+
       problem->busy[i] = problem->task[i].ending_date;
       problem->total_profit += problem->task[i].profit;
       problem->task[i].assigned_to = i;
+
       recursive_function(problem, i + 1);
+      
       problem->total_profit = profit_tmp;
       problem->busy[i] = busy_tmp;
       return;
@@ -338,15 +341,18 @@ static void solve(problem_t *problem)
   //
   // save solution data
   //
+  //!por numa quarta coluna o numero do programador(assigned_to)
+  //!e por tb o best profit
   fprintf(fp, "NMec = %d\n", problem->NMec);
   fprintf(fp, "T = %d\n", problem->T);
   fprintf(fp, "P = %d\n", problem->P);
   fprintf(fp, "Profits%s ignored\n", (problem->I == 0) ? " not" : "");
+  fprintf(fp, "Best Profit = %d\n", problem->best_total_profit);
   fprintf(fp, "Solution time = %.3e\n", problem->cpu_time);
-  fprintf(fp, "Task date\n");
+  fprintf(fp, "Task date  Profit P\n");
 #define TASK problem->task[i]
   for (i = 0; i < problem->T; i++)
-    fprintf(fp, "  %3d %3d %5d\n", TASK.starting_date, TASK.ending_date, TASK.profit);
+    fprintf(fp, "  %3d %3d %5d %3d\n", TASK.starting_date, TASK.ending_date, TASK.profit, TASK.assigned_to);
 #undef TASK
   fprintf(fp, "End\n");
   //
