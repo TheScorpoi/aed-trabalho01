@@ -106,6 +106,7 @@ typedef struct
   int P;              // I  number of programmers
   int I;              // I  if 1, ignore profits
   int total_profit;   // S  current total profit
+  int best_total_profit; 
   double cpu_time;    // S  time it took to find the solution
   task_t task[MAX_T]; // IS task data
   int busy[MAX_P];    // S  for each programmer, record until when she/he is busy (-1 means idle)
@@ -266,34 +267,44 @@ void init_problem(int NMec, int T, int P, int ignore_profit, problem_t *problem)
 // problem solution (place your solution here)
 //
 
-int recursive_function(problem_t *problem, int i)
+void recursive_function(problem_t *problem, int i)
 {
 
   if (i = 0)
   {
-    //int NMec, int T, int P, int ignore_profit
-    int ignore_profit;
-    init_problem(problem->NMec, problem->T, problem->P, ignore_profit, problem);
+    problem->total_profit = 0;
+    problem->best_total_profit = 0;
+    //fazer for e por o busy todo a menos 1
   }
 
   if (i = problem->T)
   {
-    //ir ver 
-    //close problem
+    //ir ver o melhor profit, fazer o best_assigened_to, e aquilo tudo
+    if (problem->total_profit > problem->best_total_profit)
+    {
+      problem->best_total_profit = problem->total_profit;
+    }
+
     return;
   }
 
-  //avançar sem atribuir a tareda
+  //*avançar sem atribuir a tareda
   recursive_function(problem, i + 1);
 
-
-  //tenta incluir a tarefa, se consefuit avança
-  for (int i = 0; i < sizeof(problem->busy) / sizeof(problem->busy[0]); i++)
+  //*tenta incluir a tarefa, se consefuit avança
+  for (int i = 0; i < problem->P; i++)
   {
-    if (problem->busy[i] == -1) // -1 significa que há programador livre
+    if (problem->busy[i] < problem->task[i].starting_date)
     {
-    recursive_function(problem, i + 1);
-    break;
+      int profit_tmp = problem->total_profit;
+      int busy_tmp = problem->busy[i];
+      problem->busy[i] = problem->task[i].ending_date;
+      problem->total_profit += problem->task[i].profit;
+      problem->task[i].assigned_to = i;
+      recursive_function(problem, i + 1);
+      problem->total_profit = profit_tmp;
+      problem->busy[i] = busy_tmp;
+      return;
     }
   }
 }
