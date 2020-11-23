@@ -13,18 +13,9 @@ typedef struct
 
 //tree_node *new_tree_node(int data, tree_node *parent);
 
-void insert_recursive(tree_node **link, tree_node *parent, int data){
-    if (*link == NULL)
-    {
-        *link = new_tree_node(data, parent);
-    } else if (data <= (*link)->data)
-    {
-        insert_recursive(&((*link)->left), *link, data);
-    } else
-    {
-        insert_recursive(&((*link)->right), *link, data);
-    }
-}
+
+
+
 
 int main(int argc, char const *argv[])
 {

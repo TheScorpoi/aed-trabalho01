@@ -96,6 +96,7 @@ typedef struct
   int ending_date;   // I ending date of this task
   int profit;        // I the profit if this task is performed
   int assigned_to;   // S current programmer number this task is assigned to (use -1 for no assignment)
+  //! Fazer o best_assignd_to com o caminho que tem o melhor profit (for em task_t)
 } task_t;
 
 typedef struct
@@ -265,6 +266,38 @@ void init_problem(int NMec, int T, int P, int ignore_profit, problem_t *problem)
 // problem solution (place your solution here)
 //
 
+int recursive_function(problem_t *problem, int i)
+{
+
+  if (i = 0)
+  {
+    //int NMec, int T, int P, int ignore_profit
+    int ignore_profit;
+    init_problem(problem->NMec, problem->T, problem->P, ignore_profit, problem);
+  }
+
+  if (i = problem->T)
+  {
+    //ir ver 
+    //close problem
+    return;
+  }
+
+  //avançar sem atribuir a tareda
+  recursive_function(problem, i + 1);
+
+
+  //tenta incluir a tarefa, se consefuit avança
+  for (int i = 0; i < sizeof(problem->busy) / sizeof(problem->busy[0]); i++)
+  {
+    if (problem->busy[i] == -1) // -1 significa que há programador livre
+    {
+    recursive_function(problem, i + 1);
+    break;
+    }
+  }
+}
+
 #if 1
 
 static void solve(problem_t *problem)
@@ -287,6 +320,8 @@ static void solve(problem_t *problem)
   //
   problem->cpu_time = cpu_time();
   //! call your (recursive?) function to solve the problem here
+  i = 0;
+  recursive_function(problem, i);
 
   problem->cpu_time = cpu_time() - problem->cpu_time;
   //
