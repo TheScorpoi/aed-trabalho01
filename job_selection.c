@@ -92,26 +92,26 @@ int rng_main() __attribute__((__unused__)); // gcc will not complain if rnd_main
 
 typedef struct
 {
-  int starting_date; // I starting date of this task
-  int ending_date;   // I ending date of this task
-  int profit;        // I the profit if this task is performed
-  int assigned_to;   // S current programmer number this task is assigned to (use -1 for no assignment)
-  //! Fazer o best_assignd_to com o caminho que tem o melhor profit (for em task_t)
+  int starting_date;    // I starting date of this task
+  int ending_date;      // I ending date of this task
+  int profit;           // I the profit if this task is performed
+  int assigned_to;      // S current programmer number this task is assigned to (use -1 for no assignment)
+  int best_assigned_to; //   Fazer o best_assigned_to com o caminho que tem o melhor profit (for em task_t)
 } task_t;
 
 typedef struct
 {
-  int NMec;           // I  student number
-  int T;              // I  number of tasks
-  int P;              // I  number of programmers
-  int I;              // I  if 1, ignore profits
-  int total_profit;   // S  current total profit
-  int best_total_profit; 
-  double cpu_time;    // S  time it took to find the solution
-  task_t task[MAX_T]; // IS task data
-  int busy[MAX_P];    // S  for each programmer, record until when she/he is busy (-1 means idle)
-  char dir_name[16];  // I  directory name where the solution file will be created
-  char file_name[64]; // I  file name where the solution data will be stored
+  int NMec;              // I  student number
+  int T;                 // I  number of tasks
+  int P;                 // I  number of programmers
+  int I;                 // I  if 1, ignore profits
+  int total_profit;      // S  current total profit
+  int best_total_profit; //    best total profit
+  double cpu_time;       // S  time it took to find the solution
+  task_t task[MAX_T];    // IS task data
+  int busy[MAX_P];       // S  for each programmer, record until when she/he is busy (-1 means idle)
+  char dir_name[16];     // I  directory name where the solution file will be created
+  char file_name[64];    // I  file name where the solution data will be stored
 } problem_t;
 
 int compare_tasks(const void *t1, const void *t2)
@@ -270,32 +270,41 @@ void init_problem(int NMec, int T, int P, int ignore_profit, problem_t *problem)
 void recursive_function(problem_t *problem, int i)
 {
 
-  if (i = 0)
+  // Os dois if's seguintes, são basicamente para tratar as 2 excepções existentes, quando começa, e quando acaba.
+  // Quando começa, temos de por os profit's a zero, e colocar o array busy, todo a '-1', pois no início os P estao todos livres
+  // Quando acaba para comparar os profit's, atual com o melhor
+
+  if ((i = 0))
   {
     problem->total_profit = 0;
     problem->best_total_profit = 0;
-    //fazer for e por o busy todo a menos 1
+    //Inicializar busy a '-1'
+    for (i = 0; i < problem->P; i++)
+    {
+      problem->busy[i] = -1;
+    }
   }
 
-  if (i = problem->T)
+  if ((i = problem->T))
   {
-    if (problem->total_profit > problem->best_total_profit)
+    if (problem->total_profit > problem->best_total_profit) //se o meu profit atual for maior que o melhor profit, ent o melhor fica com o valor do atual
     {
       problem->best_total_profit = problem->total_profit;
     }
-
     return;
   }
 
   //*avançar sem atribuir a tareda
   recursive_function(problem, i + 1);
+  //? se a tarefa nao for atribuida então assigned_to fica a -1, é aqui que se faz?
+  problem->task->assigned_to = -1;
 
-  //*tenta incluir a tarefa, se consefuit avança
+  //*tenta incluir a tarefa, se conseguir avança
   for (int i = 0; i < problem->P; i++)
   {
-    if (problem->busy[i] < problem->task[i].starting_date)
+    if (problem->busy[i] < problem->task[i].starting_date) //se houver programador livre ...
     {
-      //criar variáveis tmp 
+      //criar variáveis tmp
       int profit_tmp = problem->total_profit;
       int busy_tmp = problem->busy[i];
 
@@ -304,7 +313,7 @@ void recursive_function(problem_t *problem, int i)
       problem->task[i].assigned_to = i;
 
       recursive_function(problem, i + 1);
-      
+
       problem->total_profit = profit_tmp;
       problem->busy[i] = busy_tmp;
       return;
@@ -334,25 +343,25 @@ static void solve(problem_t *problem)
   //
   problem->cpu_time = cpu_time();
   //! call your (recursive?) function to solve the problem here
-  i = 0;
-  recursive_function(problem, i);
+
+  recursive_function(problem, 0);
 
   problem->cpu_time = cpu_time() - problem->cpu_time;
   //
   // save solution data
   //
-  //!por numa quarta coluna o numero do programador(assigned_to)
-  //!e por tb o best profit
+  //! assigned_to, e best_total_profit, e best_assigned_to ---> ainda nao funcionam
   fprintf(fp, "NMec = %d\n", problem->NMec);
   fprintf(fp, "T = %d\n", problem->T);
   fprintf(fp, "P = %d\n", problem->P);
   fprintf(fp, "Profits%s ignored\n", (problem->I == 0) ? " not" : "");
   fprintf(fp, "Best Profit = %d\n", problem->best_total_profit);
+  fprintf(fp, "Best Assigned = %d\n", problem->task->best_assigned_to);
   fprintf(fp, "Solution time = %.3e\n", problem->cpu_time);
-  fprintf(fp, "Task date  Profit P\n");
+  fprintf(fp, "Task date  Profit  P\n");
 #define TASK problem->task[i]
   for (i = 0; i < problem->T; i++)
-    fprintf(fp, "  %3d %3d %5d %3d\n", TASK.starting_date, TASK.ending_date, TASK.profit, TASK.assigned_to);
+    fprintf(fp, "  %-3d %-3d %-8d %-5d\n", TASK.starting_date, TASK.ending_date, TASK.profit, TASK.assigned_to);
 #undef TASK
   fprintf(fp, "End\n");
   //
