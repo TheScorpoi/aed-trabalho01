@@ -269,13 +269,13 @@ void init_problem(int NMec, int T, int P, int ignore_profit, problem_t *problem)
 
 void recursive_function(problem_t *problem, int i)
 {
-
   // Os dois if's seguintes, são basicamente para tratar as 2 excepções existentes, quando começa, e quando acaba.
   // Quando começa, temos de por os profit's a zero, e colocar o array busy, todo a '-1', pois no início os P estao todos livres
   // Quando acaba para comparar os profit's, atual com o melhor
 
-  if ((i = 0))
+  if ((i == 0))
   {
+    printf("inicializar problema\n");
     problem->total_profit = 0;
     problem->best_total_profit = 0;
     //Inicializar busy a '-1'
@@ -285,37 +285,42 @@ void recursive_function(problem_t *problem, int i)
     }
   }
 
-  if ((i = problem->T))
+  if ((i == problem->T))
   {
     if (problem->total_profit > problem->best_total_profit) //se o meu profit atual for maior que o melhor profit, ent o melhor fica com o valor do atual
     {
+      printf("NOVO BEST TOTAL PROFIT!\n");
       problem->best_total_profit = problem->total_profit;
     }
     return;
   }
 
   //*avançar sem atribuir a tareda
-  recursive_function(problem, i + 1);
   //? se a tarefa nao for atribuida então assigned_to fica a -1, é aqui que se faz?
   problem->task->assigned_to = -1;
 
+  printf("Nao atribui tarefa\n");
+  recursive_function(problem, i + 1);
+
   //*tenta incluir a tarefa, se conseguir avança
-  for (int i = 0; i < problem->P; i++)
+  for (int j = 0; j < problem->P; j++)
   {
-    if (problem->busy[i] < problem->task[i].starting_date) //se houver programador livre ...
+    if (problem->busy[j] < problem->task[j].starting_date) //se houver programador livre ...
     {
+      printf("Atribui tarefa\n");
       //criar variáveis tmp
       int profit_tmp = problem->total_profit;
-      int busy_tmp = problem->busy[i];
+      int busy_tmp = problem->busy[j];
 
-      problem->busy[i] = problem->task[i].ending_date;
-      problem->total_profit += problem->task[i].profit;
-      problem->task[i].assigned_to = i;
+      problem->busy[j] = problem->task[j].ending_date;
+      problem->total_profit += problem->task[j].profit;
+      problem->task[j].assigned_to = j;
 
-      recursive_function(problem, i + 1);
+      recursive_function(problem, j + 1);
 
+      problem->task[j].assigned_to = -1;
       problem->total_profit = profit_tmp;
-      problem->busy[i] = busy_tmp;
+      problem->busy[j] = busy_tmp;
       return;
     }
   }
@@ -350,7 +355,7 @@ static void solve(problem_t *problem)
   //
   // save solution data
   //
-  //! assigned_to, e best_total_profit, e best_assigned_to ---> ainda nao funcionam
+  //! assigned_to, e best_assigned_to ---> ainda nao funcionam
   fprintf(fp, "NMec = %d\n", problem->NMec);
   fprintf(fp, "T = %d\n", problem->T);
   fprintf(fp, "P = %d\n", problem->P);
@@ -358,10 +363,10 @@ static void solve(problem_t *problem)
   fprintf(fp, "Best Profit = %d\n", problem->best_total_profit);
   fprintf(fp, "Best Assigned = %d\n", problem->task->best_assigned_to);
   fprintf(fp, "Solution time = %.3e\n", problem->cpu_time);
-  fprintf(fp, "Task date  Profit  P\n");
+  fprintf(fp, "Task date  Profit    P\n");
 #define TASK problem->task[i]
   for (i = 0; i < problem->T; i++)
-    fprintf(fp, "  %-3d %-3d %-8d %-5d\n", TASK.starting_date, TASK.ending_date, TASK.profit, TASK.assigned_to);
+    fprintf(fp, "  %-3d %-3d   %-8d %-4d\n", TASK.starting_date, TASK.ending_date, TASK.profit, TASK.assigned_to);
 #undef TASK
   fprintf(fp, "End\n");
   //
