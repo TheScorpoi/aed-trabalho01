@@ -287,10 +287,13 @@ void recursive_function(problem_t *problem, int i)
 
   if ((i == problem->T))
   {
+    //fazer tabela como nos slides tarefa um assigned_to ... tarefa 2 assigned_to ... e o total profit desse conjunto de tarefas
+    //printf("", );
     if (problem->total_profit > problem->best_total_profit) //se o meu profit atual for maior que o melhor profit, ent o melhor fica com o valor do atual
     {
       printf("NOVO BEST TOTAL PROFIT!\n");
       problem->best_total_profit = problem->total_profit;
+
     }
     return;
   }
