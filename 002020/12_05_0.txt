@@ -1,0 +1,21 @@
+NMec = 2020
+T = 12
+P = 5
+Profits not ignored
+Best Profit = 20277
+Best Assigned = 0
+Solution time = 6.719e-05
+Task date  Profit    P
+  0   28    3065     0   
+  1   23    2318     1   
+  2   6     461      2   
+  2   10    1783     3   
+  6   21    2577     4   
+  6   29    6193     -1  
+  7   29    3544     2   
+  8   19    977      -1  
+  9   19    2196     -1  
+  10  20    1500     -1  
+  14  29    1577     3   
+  22  28    1077     4   
+End
