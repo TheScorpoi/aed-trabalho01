@@ -53,10 +53,6 @@ public class Task_t {
         return best_assigned_to;
     }
 
-    public void setBest_assigned_to(int best_assigned_to) {
-        this.best_assigned_to = best_assigned_to;
-    }
-
     @Override
     public int hashCode() {
         final int prime = 31;

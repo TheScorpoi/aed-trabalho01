@@ -17,6 +17,24 @@ public class Problem_t extends Task_t {
     List<String> dir_name = new ArrayList<>();
     List<String> file_name = new ArrayList<>();
 
+    public int compare_tasks(Task_t t1, Task_t t2) {
+        int d1, d2;
+
+        d1 = t1.getStarting_date();
+        d2 = t2.getStarting_date();
+
+        if (d1 != d2) {
+            return (d1 < d2) ? -1 : +1;
+        }
+
+        d1 = t1.getEnding_date();
+        d2 = t2.getEnding_date();
+        if (d1 != d2) {
+            return (d1 < d2) ? -1 : +1;
+        }
+        return 0;
+    }
+
     public Problem_t(int starting_date, int ending_date, int profit, int assigned_to, int best_assigned_to, int nMec,
             int t, int p, int i, int total_profit, int best_total_profit, double cpu_time, List<Task_t> task,
             List<Integer> busy, List<String> dir_name, List<String> file_name) {
@@ -34,11 +52,6 @@ public class Problem_t extends Task_t {
         this.file_name = file_name;
     }
 
-   
-
-    public void add(int a){
-        busy.add(a);
-    }
 
 	public int getnMec() {
         return nMec;
@@ -68,10 +81,6 @@ public class Problem_t extends Task_t {
         return I;
     }
 
-    public void setI(int i) {
-        I = i;
-    }
-
     public int getTotal_profit() {
         return total_profit;
     }
@@ -90,42 +99,6 @@ public class Problem_t extends Task_t {
 
     public double getCpu_time() {
         return cpu_time;
-    }
-
-    public void setCpu_time(double cpu_time) {
-        this.cpu_time = cpu_time;
-    }
-
-    public List<Task_t> getTask() {
-        return task;
-    }
-
-    public void setTask(List<Task_t> task) {
-        this.task = task;
-    }
-
-    public List<Integer> getBusy() {
-        return busy;
-    }
-
-    public void setBusy(List<Integer> busy) {
-        this.busy = busy;
-    }
-
-    public List<String> getDir_name() {
-        return dir_name;
-    }
-
-    public void setDir_name(List<String> dir_name) {
-        this.dir_name = dir_name;
-    }
-
-    public List<String> getFile_name() {
-        return file_name;
-    }
-
-    public void setFile_name(List<String> file_name) {
-        this.file_name = file_name;
     }
 
     @Override
@@ -200,5 +173,4 @@ public class Problem_t extends Task_t {
                 + busy + ", cpu_time=" + cpu_time + ", dir_name=" + dir_name + ", file_name=" + file_name + ", nMec="
                 + nMec + ", task=" + task + ", total_profit=" + total_profit + "]";
     }
-
 }

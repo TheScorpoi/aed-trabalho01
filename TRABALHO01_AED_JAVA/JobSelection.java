@@ -5,9 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-import javax.print.attribute.standard.PrinterInfo;
 
 public class JobSelection {
     public static void main(String[] args) {
@@ -68,8 +65,7 @@ public class JobSelection {
         }
 
         // probability of each possible task duration
-        // ! Nao sei como se faz para alocar memoria em Java, ou qual a operacao
-        // semelhante, ou se nem há
+        // ! Nao sei como se faz para alocar memoria em Java, ou qual a operacao semelhante, ou se nem há
         // weight = (int *)alloca((size_t)(total_span + 1) * sizeof(int)); // allocate
         // memory (freed automatically)
         // if (weight == NULL) {
@@ -77,7 +73,7 @@ public class JobSelection {
         // exit(1);
         // }
 
-        int tail = 1; // ! NAO SEI O QUE É O TAIL
+        int tail = 100; 
 
         scale = (int) Math.ceil(tail * 10.0 * ((double) total_span - 29) / 298.0);
         if (scale < tail) {
@@ -103,7 +99,7 @@ public class JobSelection {
             weight.add(i, sum);
         }
 
-        // ! numero random
+        //! numero random nao fiz
 
         problem.setnMec(NMec);
         problem.setT(T);
@@ -129,15 +125,16 @@ public class JobSelection {
                 problem.task.get(i).setProfit(1 + Math.round((double) span) * (50.0 + Math.sqrt((double) scale)));
             } else {
                 problem.task.get(i).setProfit(1 + Math.round((double) span) * (300.0 - 2.0 * Math.sqrt((double) (12500 - scale))));
-            }
-
-            // sort the tasks by the starting date
+            } 
         }
+        // sort the tasks by the starting date
+        
+        
         // finish
 
         if (problem.getI() != 0) {
             for (i = 0; i < problem.getT(); i++) {
-                problem.task.get(i).getProfit() = 1;
+                problem.task.get(i).setProfit(1);
             }
         }
     }
@@ -148,7 +145,7 @@ public class JobSelection {
             problem.setTotal_profit(0);
             problem.setBest_total_profit(0);
             for (int k = 0; k < problem.getP(); k++) {
-                problem.busy.get(k).add(-1);
+                problem.busy.set(k, -1);
             }
         }
 
@@ -164,11 +161,12 @@ public class JobSelection {
         recursive_function(problem, i + 1);
 
         for (int j = 0; j < problem.getP(); j++) {
-            if (problem.busy.get(j) < problem.task.get(i).getStarting_date()) {
+            if (problem.busy.get(j) < problem.task.get(i).getStarting_date()) { // se houver programador livre
+                // criar variáveis tmp
                 int profit_tmp = problem.getTotal_profit();
                 int busy_tmp = problem.busy.get(j);
 
-                problem.busy.get(j).setBusy(problem.task.get(i).getEnding_date());
+                problem.busy.set(j, problem.task.get(i).getEnding_date());
                 problem.setTotal_profit((problem.getTotal_profit() + problem.task.get(i).getProfit()));
                 problem.task.get(i).setAssigned_to(-1);
 
@@ -176,7 +174,7 @@ public class JobSelection {
 
                 problem.task.get(i).setAssigned_to(-1);
                 problem.setTotal_profit(profit_tmp);
-                problem.busy.get(j) = busy_tmp;
+                problem.busy.set(j, busy_tmp);
 
                 return;
             }
@@ -186,9 +184,9 @@ public class JobSelection {
     public static void solve(Problem_t problem) {
 
         StringBuilder nameFile = new StringBuilder();
-        nameFile.append(problem.getT() + "_" + problem.getP() + "_" + problem.getI() + ".txt");
+        nameFile.append("00" + problem.getnMec() + "/"+ problem.getT() + "_" + problem.getP() + "_" + problem.getI() + ".txt");
 
-        try (PrintWriter out = new PrintWriter(new File( nameFile ))) {
+        try (PrintWriter out = new PrintWriter(new File("nameFile"))) {
             out.printf("NMec = %d\n", problem.getnMec());
             out.printf("T = %d\n", problem.getT());
             out.printf("P = %d\n", problem.getP());

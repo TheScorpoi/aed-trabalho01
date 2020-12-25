@@ -113,6 +113,7 @@ typedef struct
     int busy[MAX_P];        // S  for each programmer, record until when she/he is busy (-1 means idle)
     char dir_name[16];      // I  directory name where the solution file will be created
     char file_name[64];     // I  file name where the solution data will be stored
+    int terminal_cases;     //    number of analized cases
 } problem_t;
 
 int compare_tasks(const void *t1, const void *t2) {
@@ -262,7 +263,7 @@ void init_problem(int NMec, int T, int P, int ignore_profit, problem_t *problem)
 void recursive_function(problem_t *problem, int i) {
     // Os dois if's seguintes, são basicamente para tratar as 2 excepções existentes, quando começa, e quando acaba.
     // Quando começa, temos de por os profit's a zero, e colocar o array busy, todo a '-1', pois no início os P estao todos livres
-    // Quando acaba para comparar os profit's, atual com o melhor
+    // Quando acaba para comparar os profit's, atual com o melhor, e incrementar casos termianais
 
     // i para as tarefas
     // j para os programadores
@@ -281,6 +282,8 @@ void recursive_function(problem_t *problem, int i) {
         if (problem->total_profit > problem->best_total_profit) {
             problem->best_total_profit = problem->total_profit;
         }
+        //incrementar o número de casos terminais
+        problem->terminal_cases++; 
         return;
     }
 
@@ -332,6 +335,7 @@ static void solve(problem_t *problem) {
     //
     problem->cpu_time = cpu_time();
     //! call your (recursive?) function to solve the problem here
+    problem->terminal_cases = 0; //inicializar contador de casos terminais
 
     recursive_function(problem, 0);
 
@@ -345,8 +349,8 @@ static void solve(problem_t *problem) {
     fprintf(fp, "P = %d\n", problem->P);
     fprintf(fp, "Profits%s ignored\n", (problem->I == 0) ? " not" : "");
     fprintf(fp, "Best Profit = %d\n", problem->best_total_profit);
-    fprintf(fp, "Best Assigned = %d\n", problem->task->best_assigned_to);
     fprintf(fp, "Solution time = %.3e\n", problem->cpu_time);
+    fprintf(fp, "Terminal Cases = %d\n", problem->terminal_cases);
     fprintf(fp, "Task date  Profit    P\n");
 #define TASK problem->task[i]
     for (i = 0; i < problem->T; i++)
