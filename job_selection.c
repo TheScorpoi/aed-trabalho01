@@ -358,7 +358,7 @@ static void solve(problem_t *problem) {
     } else if (problem-> I == 1){
         fprintf(fp, "Programing Tasks = %d\n", problem->best_total_profit);
     }
-    fprintf(fp, "Terminal Cases = %d\n", (problem->I == 0 ) ? problem->terminal_cases : problem->number_solutions);
+    fprintf(fp, "Terminal Cases = %ld\n", (problem->I == 0 ) ? problem->terminal_cases : problem->number_solutions);
     fprintf(fp, "Task date  Profit    P\n");
 #define TASK problem->task[i]
     for (i = 0; i < problem->T; i++)
