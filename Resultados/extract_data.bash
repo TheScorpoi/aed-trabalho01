@@ -3,7 +3,7 @@
 
 cd ../002020/
 
-grep "Solution time =" *.txt | sed -e 's/_0.txt:Solution time =//' -e 's/_/ /' >../Resultados/temposExecucao.txt
-grep "Best Profit =" *.txt | sed -e 's/_0.txt:Best Profit =//' -e 's/_/ /' >../Resultados/totalsProfit.txt
+grep "Solution time =" *.txt | sed -e 's/_0.txt:Solution time =//' -e 's/_/ /' >../Resultados/temposExecucao98491.txt
+grep "Best Profit =" *.txt | sed -e 's/_0.txt:Best Profit =//' -e 's/_/ /' >../Resultados/totalsProfit98491.txt
 
 

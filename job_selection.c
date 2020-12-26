@@ -113,7 +113,8 @@ typedef struct
     int busy[MAX_P];        // S  for each programmer, record until when she/he is busy (-1 means idle)
     char dir_name[16];      // I  directory name where the solution file will be created
     char file_name[64];     // I  file name where the solution data will be stored
-    int terminal_cases;     //    number of analized cases
+    int terminal_cases;     //    number of analized cases 
+    int number_solutions;   //    number of solutions, used when I is 1 
 } problem_t;
 
 int compare_tasks(const void *t1, const void *t2) {
@@ -281,6 +282,10 @@ void recursive_function(problem_t *problem, int i) {
         //se o meu profit atual for maior que o melhor profit, ent o melhor fica com o valor do atual
         if (problem->total_profit > problem->best_total_profit) {
             problem->best_total_profit = problem->total_profit;
+            problem->number_solutions = 1;
+
+        } else if (problem->total_profit == problem->best_total_profit) {
+            problem->number_solutions++;
         }
         //incrementar o número de casos terminais
         problem->terminal_cases++; 
@@ -307,7 +312,7 @@ void recursive_function(problem_t *problem, int i) {
 
             recursive_function(problem, i + 1);
 
-            problem->task[i].assigned_to = -1;
+            //problem->task[i].assigned_to = -1;
             problem->total_profit = profit_tmp;
             problem->busy[j] = busy_tmp;
             return;
@@ -348,9 +353,13 @@ static void solve(problem_t *problem) {
     fprintf(fp, "T = %d\n", problem->T);
     fprintf(fp, "P = %d\n", problem->P);
     fprintf(fp, "Profits%s ignored\n", (problem->I == 0) ? " not" : "");
-    fprintf(fp, "Best Profit = %d\n", problem->best_total_profit);
     fprintf(fp, "Solution time = %.3e\n", problem->cpu_time);
-    fprintf(fp, "Terminal Cases = %d\n", problem->terminal_cases);
+    if (problem->I == 0){
+        fprintf(fp, "Best Profit = %d\n", problem->best_total_profit);
+    } else if (problem-> I == 1){
+        fprintf(fp, "Programing Tasks = %d\n", problem->best_total_profit);
+    }
+    fprintf(fp, "Terminal Cases = %d\n", (problem->I == 0 ) ? problem->terminal_cases : problem->number_solutions);
     fprintf(fp, "Task date  Profit    P\n");
 #define TASK problem->task[i]
     for (i = 0; i < problem->T; i++)

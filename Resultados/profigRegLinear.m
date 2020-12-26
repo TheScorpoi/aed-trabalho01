@@ -3,7 +3,7 @@ clear all; close all;
 % Codigo MatLab para a implementação de um gráfico
 % mostra todos os profits, e faz a regressão linear
 
-file = load("./002020/totalsProfit.txt");
+file = load("totalsProfit.txt");
 
 profit = file(:,3); %eixo z
 
