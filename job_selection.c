@@ -113,8 +113,8 @@ typedef struct
     int busy[MAX_P];        // S  for each programmer, record until when she/he is busy (-1 means idle)
     char dir_name[16];      // I  directory name where the solution file will be created
     char file_name[64];     // I  file name where the solution data will be stored
-    int terminal_cases;     //    number of analized cases 
-    int number_solutions;   //    number of solutions, used when I is 1 
+    unsigned long int terminal_cases;     //    number of analized cases 
+    unsigned long int number_solutions;   //    number of solutions, used when I is 1 
 } problem_t;
 
 int compare_tasks(const void *t1, const void *t2) {
