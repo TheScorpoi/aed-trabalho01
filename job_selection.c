@@ -348,7 +348,6 @@ static void solve(problem_t *problem) {
     //
     // save solution data
     //
-    //! best_assigned_to ---> ainda nao funcionam
     fprintf(fp, "NMec = %d\n", problem->NMec);
     fprintf(fp, "T = %d\n", problem->T);
     fprintf(fp, "P = %d\n", problem->P);
