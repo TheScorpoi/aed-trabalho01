@@ -2,14 +2,11 @@
 Trabalho Prático 01 - AED
 
 ## Job Selection
-EXPLICAR O TIPO DE PROBLEMA DO TRABALHO PRÁTICO E QUAL A SOLUCAO NS
-
-###  Início
-Bem-vendo ao README.md, aqui verás todas as instruções para executares e perceberes o projeto.
+Dado um número de tarefas, e um número de programadores, o programa implementado em C, de forma genérica, através de um algoritmo recursivo feito por nós, retorna a melhor maneira de realização do trabalho, ou seja, a maneira em que se consegue obter mais lucro, sem que ocorra sobreposição de programadores. 
 
 ### Pré-requesitos 
 Para compilar os programas, é vital ter um Compilador de C instalado na máquina (p.e. gcc).
-O projeto foi desenvolvido com recurso ao VSCode, e ao Matlab ... BLABLABLA WISHCAS SAQUETAS 
+O projeto foi desenvolvido com recurso ao IDE VSCode, para implementação do código c, e ao Matlab, para a realização de gráficos usados no relatório. 
 
 ### Compilar
 Para compilar o programa, é necessário executar o comando na pasta onde o ficheiro **job_selection.c** se encontra da seguinte maneira:
@@ -18,11 +15,16 @@ Para compilar o programa, é necessário executar o comando na pasta onde o fich
 ```
 cc -Wall -O2 job_selection.c -o prog -lm
 ./prog 2020 30 6 1
-
+```
+Com o objetivo de conseguir obter os resultados mais rapidamente, usamos o script **job_selection_do_all.bash**, onde conseguimos correr o programa
+n vezes em n terminais diferentes, sendo o n máximo o número de cores do processador.
+```
+chmod u+x job_selection_do_all.bash
+./job_selection_do_all.bash
 ```
 
 ### Relatório
-Este projeto está acompanhado por um [Relatório](/Relatório), onde são tiradas as principais conclusões.
+Este projeto está acompanhado por um [Relatório](/Relatório), onde é explicado todo o processo de construção do problema, e onde são tiradas as conclusões do mesmo.
 
 ## Autores
 

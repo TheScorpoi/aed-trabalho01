@@ -1,6 +1,6 @@
 INTRO RELATORIO AED
 
-No contexto da unidade curricular de AED, foi-nos apresentada a realização deste trabalho prático, sendo este relatório o resultado do código “Job Selection Problem”. Todo o código fonte e informações deste trabalho prático podem ser encontradas neste repositório do GitHub1 (mais informações, ler README.md do repositório). 
+No âmbito da unidade curricular de AED, foi-nos apresentada a realização deste trabalho prático, sendo este relatório o resultado do código “Job Selection Problem”. Todo o código fonte e informações deste trabalho prático podem ser encontradas neste repositório do GitHub1 (mais informações, ler README.md do repositório). 
 
 Dado um número de tarefas, e um número de programadores, o programa implementado em C, de forma genérica, através de um algoritmo recursivo feito por nós, retorna a melhor maneira de realização do trabalho, ou seja, a maneira em que se consegue obter mais lucro, sem que ocorra sobreposição de programadores. 
 
