@@ -1,0 +1,9 @@
+#! /bin/bash
+# script bash onde guardamos em 2 ficheiros .txt os tempos de execução, e os profits de cada task
+
+cd ../002020/
+
+grep "Solution time =" *.txt | sed -e 's/_0.txt:Solution time =//' -e 's/_/ /' >../Resultados/temposExecucao.txt
+grep "Best Profit =" *.txt | sed -e 's/_0.txt:Best Profit =//' -e 's/_/ /' >../Resultados/totalsProfit.txt
+
+

@@ -10,7 +10,7 @@ public class ProcessData {
 
         Map<String, Integer> profitsMap = new TreeMap<>();
 
-        String fileName = "./002020/totalsProfit.txt";
+        String fileName = "./Resultados/totalsProfit.txt";
 
         try (Scanner input = new Scanner(new FileReader(fileName))) {
 
