@@ -6,7 +6,8 @@ Dado um número de tarefas, e um número de programadores, o programa implementa
 
 ### Pré-requesitos 
 Para compilar os programas, é vital ter um Compilador de C instalado na máquina (p.e. gcc).
-O projeto foi desenvolvido com recurso ao IDE VSCode, para implementação do código c, e ao Matlab, para a realização de gráficos usados no relatório. 
+O projeto foi desenvolvido com recurso ao IDE VSCode, para implementação do código C e Java, e ao Matlab, para a realização de gráficos usados no relatório.
+A implementação em Java, serviu essencialmente para observação e tratamento de resultados
 
 ### Compilar
 Para compilar o programa, é necessário executar o comando na pasta onde o ficheiro **job_selection.c** se encontra da seguinte maneira:
