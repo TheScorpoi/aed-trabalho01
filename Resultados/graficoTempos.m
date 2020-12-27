@@ -21,8 +21,8 @@ t98629 = log10(file98629(:,3));
 figure(1)
 plot3(T98491, P98491, t98491, '-s');
 hold on;
-plot3(T98495, P98595, t98495, '-or');
-plot3(T98629, P98629, t98629, '-tg');
+plot3(T98495, P98495, t98495, '-or');
+plot3(T98629, P98629, t98629, '-^g');
 hold off;
 
 title 'Todos os Tempos de Execução'

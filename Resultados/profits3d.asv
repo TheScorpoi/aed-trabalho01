@@ -32,12 +32,10 @@ stem(file98495);
 title 'Profit - 98495'
 xlabel 'Tarefas'
 ylabel 'Profit'
-
 hold on;
 X = file98495(:, 1);
 Y = file98495(:, 2);
 Z = file98495(:, 3);
-
 subplot(2,1,2);
 stem3(X, Y, Z);
 title 'Profit - 98495 3D'
@@ -69,3 +67,4 @@ xlabel 'Tarefas'
 ylabel 'Programador'
 zlabel 'Profit'
 hold off;
+

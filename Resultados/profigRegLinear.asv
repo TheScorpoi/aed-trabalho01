@@ -16,13 +16,16 @@ pp98495 = polyfit(x,profit98495,1);
 pp98629 = polyfit(x,profit98629,1);
 
 plot(x, profit98491, 'o');
-
-plot(x, profit, 'o');
-
 hold on;
+plot(x, profit98495, 's');
+plot(x, profit98629, '^');
+
+plot(x, polyval(pp98491, x),'-', "LineWidth", 3);
+plot(x, polyval(pp98495, x),'-', "LineWidth", 2);
+plot(x, polyval(pp98629, x),'-', "LineWidth", 1);
+hold off;
+
 xlabel 'Tarefas'
 ylabel 'Profit'
 title 'Regressão linear - Profits'
-
-plot(x, polyval(pp, x),'-', "LineWidth", 3);
-hold off;
+legend ('98491', '98495', '98629');
