@@ -18,7 +18,7 @@ public class Tabelas {
                     out.printf("+------------------------------------------------------+\n");
                     out.printf("|                    Profit - %s                    |\n", numMec[i]);
                     out.printf("+-------------+-----------------------+----------------+\n");
-                    out.printf("|   %-10s|      %-17s|     %-10s |\n", "Tarefas", "Programdores", "Profit");
+                    out.printf("|   %-10s|      %-16s|     %-10s |\n", "Tarefas", "Programadores", "Profit");
                     out.printf("+-------------+-----------------------+----------------+\n");
                     
                     while (input.hasNextLine()) {
