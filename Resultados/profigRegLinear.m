@@ -28,4 +28,4 @@ hold off;
 xlabel 'Tarefas'
 ylabel 'Profit'
 title 'Regressão linear - Profits'
-legend ('98491', '98495', '98629');
+legend ({'98491', '98495', '98629'},'Location', 'northwest', 'FontSize', 14);

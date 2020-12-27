@@ -16,4 +16,4 @@ hold off
 title 'Tempos de Execução'
 xlabel 'Tarefas'
 ylabel ({'Tempo (s)', '_{(log10)}'});
-legend ({'98491', '98495', '98629'},'Location', 'northwest', 'FontSize', 14);
+l
