@@ -1,7 +1,7 @@
 clear all;close all;
 
 % Profit - 98491
-file98491 = load("totalsProfit98491.txt");
+file98491 = load("../totalsProfit98491.txt");
 
 figure(1)
 subplot(2,1,1);
@@ -24,7 +24,7 @@ zlabel 'Profit'
 hold off;
 
 % Profit - 98495
-file98495 = load("totalsProfit98495.txt");
+file98495 = load("../totalsProfit98495.txt");
 
 figure(2)
 subplot(2,1,1);
@@ -32,10 +32,12 @@ stem(file98495);
 title 'Profit - 98495'
 xlabel 'Tarefas'
 ylabel 'Profit'
+
 hold on;
 X = file98495(:, 1);
 Y = file98495(:, 2);
 Z = file98495(:, 3);
+
 subplot(2,1,2);
 stem3(X, Y, Z);
 title 'Profit - 98495 3D'
@@ -46,7 +48,7 @@ hold off;
 
 
 % Profit - 98629
-file98629 = load("totalsProfit98629.txt");
+file98629 = load("../totalsProfit98629.txt");
 figure(3)
 
 subplot(2,1,1);
@@ -67,4 +69,3 @@ xlabel 'Tarefas'
 ylabel 'Programador'
 zlabel 'Profit'
 hold off;
-

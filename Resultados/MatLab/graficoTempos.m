@@ -1,9 +1,9 @@
 clear all; close all;
 
 
-file98491 = load("temposExecucao98491.txt");
-file98495 = load("temposExecucao98495.txt");
-file98629 = load("temposExecucao98629.txt");
+file98491 = load("../temposExecucao98491.txt");
+file98495 = load("../temposExecucao98495.txt");
+file98629 = load("../temposExecucao98629.txt");
 
 x = 1:length(file98491(:,1));
 

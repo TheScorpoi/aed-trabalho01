@@ -2,9 +2,9 @@ clear all; close all;
 
 % Gráfico com os tempos de execução
 
-file98491 = load("temposExecucao98491.txt");
-file98495 = load("temposExecucao98495.txt");
-file98629 = load("temposExecucao98629.txt");
+file98491 = load("../temposExecucao98491.txt");
+file98495 = load("../temposExecucao98495.txt");
+file98629 = load("../temposExecucao98629.txt");
 
 T98491 = file98491(:,1);
 P98491 = file98491(:,2);

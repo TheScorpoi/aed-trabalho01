@@ -1,6 +1,6 @@
 #! /bin/bash
 
-NMec=98495
+NMec=98491
 I=0
 d=$(printf "%06d" $NMec)
 if [ -d $d ]; then

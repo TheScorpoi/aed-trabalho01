@@ -1,9 +1,9 @@
 clear all; close all;
 
 % Gráfico com todos os profits profits, e faz a regressão linear
-file98491 = load("totalsProfit98491.txt");
-file98495 = load("totalsProfit98495.txt");
-file98629 = load("totalsProfit98629.txt");
+file98491 = load("../totalsProfit98491.txt");
+file98495 = load("../totalsProfit98495.txt");
+file98629 = load("../totalsProfit98629.txt");
 
 profit98491 = file98491(:,3); 
 profit98495 = file98495(:,3);

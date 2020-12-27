@@ -4,13 +4,13 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-public class ProcessData {
+public class ProfitRepeatCounter {
 
     public static void main(String[] args) {
 
         Map<String, Integer> profitsMap = new TreeMap<>();
 
-        String fileName = "./Resultados/totalsProfit.txt";
+        String fileName = "./Resultados/totalsProfit98491.txt";
 
         try (Scanner input = new Scanner(new FileReader(fileName))) {
 
@@ -27,7 +27,7 @@ public class ProcessData {
             }
 
             for (String key : profitsMap.keySet()) {
-                System.out.printf("%s %10d\n", key, profitsMap.get(key));
+                System.out.printf("%s\t%d\n", key, profitsMap.get(key));
             }
 
         } catch (FileNotFoundException e) {
