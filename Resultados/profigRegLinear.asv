@@ -16,7 +16,7 @@ pp98495 = polyfit(x,profit98495,1);
 pp98629 = polyfit(x,profit98629,1);
 
 plot(x, profit98491, 'o');
-hold on;
+
 plot(x, profit, 'o');
 
 hold on;
