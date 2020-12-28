@@ -269,14 +269,18 @@ void recursive_function(problem_t *problem, int i) {
     // i para as tarefas
     // j para os programadores
 
+    /* Por motivos de tempo de execucao o bloco de codigo seguinte é feito antes de se chagar a função
     if ((i == 0)) {
+        //iniciarlizar variáveis a 0
         problem->total_profit = 0;
         problem->best_total_profit = 0;
+        problem->terminal_cases = 0; 
         //Inicializar busy a '-1'
         for (int k = 0; k < problem->P; k++) {
             problem->busy[k] = -1;
         }
     }
+    */
 
     if ((i == problem->T)) {
         //se o meu profit atual for maior que o melhor profit, ent o melhor fica com o valor do atual
@@ -284,6 +288,13 @@ void recursive_function(problem_t *problem, int i) {
             problem->best_total_profit = problem->total_profit;
             problem->number_solutions = 1;
 
+            //for que percorre as tasks, e atualiza o best_assigned_to com o assigned_to cada vez que há um novo melhor profit
+            for (int k = 0; k < problem->T; k++)
+            {
+                problem->task[k].best_assigned_to = problem->task[k].assigned_to;
+            }
+
+        //usado para I = 1, ignore profit
         } else if (problem->total_profit == problem->best_total_profit) {
             problem->number_solutions++;
         }
@@ -293,26 +304,26 @@ void recursive_function(problem_t *problem, int i) {
     }
 
     //*avançar sem atribuir a tareda
-    //? se a tarefa nao for atribuida então assigned_to fica a -1, é aqui que se faz?
+    //se a tarefa nao for atribuida então assigned_to fica a -1
     problem->task[i].assigned_to = -1;
-
     recursive_function(problem, i + 1);
 
     //*tenta incluir a tarefa, se conseguir avança
     for (int j = 0; j < problem->P; j++) {
-        // se houver programador livre...
+        //se houver programador livre...
         if (problem->busy[j] < problem->task[i].starting_date) {
             //criar variáveis tmp
             int profit_tmp = problem->total_profit;
             int busy_tmp = problem->busy[j];
 
+            //atualiza variaveis
             problem->busy[j] = problem->task[i].ending_date;
             problem->total_profit += problem->task[i].profit;
             problem->task[i].assigned_to = j;
 
             recursive_function(problem, i + 1);
 
-            //problem->task[i].assigned_to = -1;
+            //repoe variaveis
             problem->total_profit = profit_tmp;
             problem->busy[j] = busy_tmp;
             return;
@@ -340,7 +351,18 @@ static void solve(problem_t *problem) {
     //
     problem->cpu_time = cpu_time();
     //! call your (recursive?) function to solve the problem here
-    problem->terminal_cases = 0; //inicializar contador de casos terminais
+    
+    //por motivos de tempo de execucao, para não estar sempre a fazer a comparação I == 0, o que é desnecessário
+    //inicializamos as seguintes variáveis aqui, fora da chamada da função.
+    {
+        problem->total_profit = 0;
+        problem->best_total_profit = 0;
+        problem->terminal_cases = 0;
+        //Inicializar busy a '-1'
+        for (int k = 0; k < problem->P; k++) {
+            problem->busy[k] = -1;
+        }
+    }
 
     recursive_function(problem, 0);
 
@@ -362,7 +384,7 @@ static void solve(problem_t *problem) {
     fprintf(fp, "Task date  Profit    P\n");
 #define TASK problem->task[i]
     for (i = 0; i < problem->T; i++)
-        fprintf(fp, "  %-3d %-3d   %-8d %-4d\n", TASK.starting_date, TASK.ending_date, TASK.profit, TASK.assigned_to);
+        fprintf(fp, "  %-3d %-3d   %-8d %-4d\n", TASK.starting_date, TASK.ending_date, TASK.profit, TASK.best_assigned_to);
 #undef TASK
     fprintf(fp, "End\n");
     //
