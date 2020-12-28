@@ -241,13 +241,13 @@ void init_problem(int NMec, int T, int P, int ignore_profit, problem_t *problem)
         for (i = 0; i < problem->T; i++)
             problem->task[i].profit = 1;
 #define DIR_NAME problem->dir_name
-    if (snprintf(DIR_NAME, sizeof(DIR_NAME), "%06d", NMec) >= sizeof(DIR_NAME)) {
+    if (snprintf(DIR_NAME, sizeof(DIR_NAME), "%06d_%d", NMec, problem->I) >= sizeof(DIR_NAME)) {
         fprintf(stderr, "Directory name too large!\n");
         exit(1);
     }
 #undef DIR_NAME
 #define FILE_NAME problem->file_name
-    if (snprintf(FILE_NAME, sizeof(FILE_NAME), "%06d/%02d_%02d_%d.txt", NMec, T, P, problem->I) >= sizeof(FILE_NAME)) {
+    if (snprintf(FILE_NAME, sizeof(FILE_NAME), "%06d_%d/%02d_%02d_%d.txt", NMec, problem->I, T, P, problem->I) >= sizeof(FILE_NAME)) {
         fprintf(stderr, "File name too large!\n");
         exit(1);
     }
