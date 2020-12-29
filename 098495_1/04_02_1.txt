@@ -2,12 +2,12 @@ NMec = 98495
 T = 4
 P = 2
 Profits ignored
-Solution time = 1.218e-06
+Solution time = 1.595e-06
 Programing Tasks = 3
 Terminal Cases = 2
 Task date  Profit    P
-  1   16    1        0   
-  7   10    1        1   
-  8   25    1        -1  
-  15  29    1        1   
+  1   16    1        -1  
+  7   10    1        0   
+  8   25    1        1   
+  15  29    1        0   
 End
