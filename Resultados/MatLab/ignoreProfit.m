@@ -19,6 +19,7 @@ plot(eixox, y98491);
 hold on;
 plot(eixox, x98491);
 title 'Profits Ignored - 98491'
+xlabel 'Tarefas'
 legend('Tasks Programing','Solutions', 'Location', 'northwest');
 
 figure(2)
@@ -28,6 +29,7 @@ plot(eixox, y98495);
 hold on;
 plot(eixox, x98495);
 title 'Profits Ignored - 98495'
+xlabel 'Tarefas'
 legend('Tasks Programing','Solutions', 'Location', 'northwest');
 
 figure(3)
@@ -37,6 +39,7 @@ plot(eixox, y98629);
 hold on;
 plot(eixox, x98629);
 title 'Profits Ignored - 98629'
+xlabel 'Tarefas'
 legend('Tasks Programing','Solutions', 'Location', 'northwest');
 
 
