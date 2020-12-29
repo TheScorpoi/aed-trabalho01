@@ -353,7 +353,7 @@ static void solve(problem_t *problem) {
     //! call your (recursive?) function to solve the problem here
     
     //por motivos de tempo de execucao, para não estar sempre a fazer a comparação I == 0, o que é desnecessário
-    //inicializamos as seguintes variáveis aqui, fora da chamada da função.
+    //inicializamos as seguintes variáveis aqui, fora da chamada da função, neste bloco
     {
         problem->total_profit = 0;
         problem->best_total_profit = 0;
