@@ -269,7 +269,7 @@ void recursive_function(problem_t *problem, int i) {
     // i para as tarefas
     // j para os programadores
 
-    // Por motivos de tempo de execucao o bloco de codigo seguinte é feito antes de se chagar a função
+    /* Por motivos de tempo de execucao o bloco de codigo seguinte é feito antes de se chagar a função
     if ((i == 0)) {
         //iniciarlizar variáveis a 0
         problem->total_profit = 0;
@@ -279,7 +279,7 @@ void recursive_function(problem_t *problem, int i) {
         for (int k = 0; k < problem->P; k++) {
             problem->busy[k] = -1;
         }
-    }
+    }*/
     
 
     if ((i == problem->T)) {
@@ -354,7 +354,7 @@ static void solve(problem_t *problem) {
     
     //por motivos de tempo de execucao, para não estar sempre a fazer a comparação I == 0, o que é desnecessário
     //inicializamos as seguintes variáveis aqui, fora da chamada da função, neste bloco
-    /*{
+    {
         problem->total_profit = 0;
         problem->best_total_profit = 0;
         problem->terminal_cases = 0;
@@ -362,7 +362,7 @@ static void solve(problem_t *problem) {
         for (int k = 0; k < problem->P; k++) {
             problem->busy[k] = -1;
         }
-    }*/
+    }
 
     recursive_function(problem, 0);
 
