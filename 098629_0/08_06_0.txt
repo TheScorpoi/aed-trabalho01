@@ -1,0 +1,17 @@
+NMec = 98629
+T = 8
+P = 6
+Profits not ignored
+Solution time = 5.485e-06
+Best Profit = 13757
+Terminal Cases = 256
+Task date  Profit    P
+  0   10    1318     0   
+  1   27    3182     1   
+  4   18    2117     2   
+  4   21    2411     3   
+  5   23    1875     4   
+  8   19    1298     5   
+  14  24    1249     0   
+  25  26    307      0   
+End
