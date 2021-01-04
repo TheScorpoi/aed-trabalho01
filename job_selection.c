@@ -262,25 +262,6 @@ void init_problem(int NMec, int T, int P, int ignore_profit, problem_t *problem)
 //
 
 void recursive_function(problem_t *problem, int i) {
-    // Os dois if's seguintes, são basicamente para tratar as 2 excepções existentes, quando começa, e quando acaba.
-    // Quando começa, temos de por os profit's a zero, e colocar o array busy, todo a '-1', pois no início os P estao todos livres
-    // Quando acaba para comparar os profit's, atual com o melhor, e incrementar casos termianais
-
-    // i para as tarefas
-    // j para os programadores
-
-    /* Por motivos de tempo de execucao o bloco de codigo seguinte é feito antes de se chagar a função
-    if ((i == 0)) {
-        //iniciarlizar variáveis a 0
-        problem->total_profit = 0;
-        problem->best_total_profit = 0;
-        problem->terminal_cases = 0; 
-        //Inicializar busy a '-1'
-        for (int k = 0; k < problem->P; k++) {
-            problem->busy[k] = -1;
-        }
-    }*/
-    
 
     if ((i == problem->T)) {
         //se o meu profit atual for maior que o melhor profit, ent o melhor fica com o valor do atual
